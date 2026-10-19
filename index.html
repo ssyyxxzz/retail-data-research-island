@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#7bcbd8">
+  <title>零售数据研究岛 / Retail Data Research Island</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Condiment&family=Manrope:wght@500;600;700&family=Noto+Sans+SC:wght@400;500;600&family=Noto+Serif+SC:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./sunny-ui.css">
+<link rel="stylesheet" href="./public-demo.css"></head>
+<body><div class="public-demo-badge" role="note">公开演示 · 所有业务数据均为虚构</div>
+  <section class="arrival" id="arrival" aria-label="零售数据研究岛登岛界面">
+    <div class="arrival__scene" aria-hidden="true"></div>
+    <div class="arrival__sun" aria-hidden="true"></div>
+    <div class="arrival__mist arrival__mist--one" aria-hidden="true"></div>
+    <div class="arrival__mist arrival__mist--two" aria-hidden="true"></div>
+    <div class="arrival__petals" aria-hidden="true">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <header class="arrival__header">
+      <a class="arrival__brand" href="./" aria-label="零售数据研究岛">
+        <span class="arrival__brand-mark"><i></i><i></i><i></i></span>
+        <span>RETAIL DATA<br>RESEARCH ISLAND</span>
+      </a>
+      <div class="arrival__nav liquid-glass" aria-label="岛屿信息">
+        <span>探索式经营研究</span><i></i><span>7 DATA LANDMARKS</span><i></i><span>LIVE ECOLOGY</span>
+      </div>
+      <div class="arrival__weather"><b>晴</b><span>24°<small>MORNING LIGHT</small></span></div>
+    </header>
+    <div class="arrival__copy">
+      <p class="arrival__kicker"><span></span> A LIVING RETAIL DATA WORLD</p>
+      <h1>零售数据<br><em>研究岛</em></h1>
+      <div class="arrival__accent">Follow the signal</div>
+      <p class="arrival__intro">让订单、商品、门店与未来预测，<br>在一座会呼吸的岛上显形。</p>
+      <button class="arrival__enter liquid-glass" id="enterIsland">
+        <span><b>登岛</b><small>ENTER THE ISLAND</small></span>
+        <i aria-hidden="true">↗</i>
+      </button>
+    </div>
+    <div class="arrival__index" aria-hidden="true"><span>01</span><i></i><small>07</small></div>
+    <div class="arrival__scroll" aria-hidden="true"><i></i><span>THE ISLAND IS AWAKE</span></div>
+  </section>
+
+  <main class="viewport" id="viewport" aria-label="可探索的零售数据研究岛">
+    <div class="world" id="world">
+      <img class="map" src="./assets/research-island-isometric-morning.png" alt="晨光海面上的零售数据研究岛，商品摩天轮、海事灯塔、玻璃温室、异常订单港、库存轨道和未来预测塔由花径相连">
+      <canvas id="waterMotion" aria-hidden="true"></canvas>
+      <canvas id="atmosphere" aria-hidden="true"></canvas>
+      <div class="kinetic-world" aria-hidden="true">
+        <div class="lighthouse-beam" id="lighthouseBeam"></div>
+        <div class="traffic-layer" id="orderTraffic"></div>
+        <div class="traffic-layer" id="inventoryTraffic"></div>
+      </div>
+      <svg class="world-motion" viewBox="0 0 1000 562" preserveAspectRatio="none" aria-hidden="true">
+        <defs>
+          <filter id="motionGlow" x="-200%" y="-200%" width="400%" height="400%"><feGaussianBlur stdDeviation="2.2" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+          <linearGradient id="beamWash" x1="0" x2="1"><stop stop-color="#eaffd9" stop-opacity=".45"/><stop offset="1" stop-color="#d4fff0" stop-opacity="0"/></linearGradient>
+          <path id="normalOrderRoute" d="M -20 530 C 55 522 74 454 128 424 C 172 400 204 407 250 388"/>
+          <path id="alertOrderRoute" d="M -15 555 C 80 544 140 508 178 466 C 204 436 223 422 277 414"/>
+          <path id="inventoryRoute" d="M 455 411 C 485 378 612 371 684 392 C 720 403 711 450 674 461 C 600 482 497 464 465 438 C 452 428 450 418 455 411"/>
+          <path id="forecastRouteA" d="M 715 114 C 766 84 820 57 904 52"/>
+          <path id="forecastRouteB" d="M 716 117 C 790 119 850 101 937 77"/>
+        </defs>
+
+        <g class="motion motion--wheel">
+          <circle class="wheel-ring" cx="151" cy="221" r="88"/>
+          <g class="wheel-rotor">
+            <circle class="wheel-hub" cx="151" cy="221" r="6"/>
+            <path d="M151 133V309M63 221H239M89 159L213 283M213 159L89 283"/>
+            <g class="wheel-nodes">
+              <circle cx="151" cy="133" r="3.5"/><circle cx="213" cy="159" r="3.5"/><circle cx="239" cy="221" r="3.5"/><circle cx="213" cy="283" r="3.5"/><circle cx="151" cy="309" r="3.5"/><circle cx="89" cy="283" r="3.5"/><circle cx="63" cy="221" r="3.5"/><circle cx="89" cy="159" r="3.5"/>
+            </g>
+          </g>
+          <circle class="wheel-pulse" cx="151" cy="221" r="9"/>
+        </g>
+
+        <g class="motion motion--store">
+          <path class="store-loop" d="M244 149 C266 120 390 112 438 145 C466 164 443 197 401 202 C338 210 252 193 239 167 C235 159 237 153 244 149Z"/>
+          <circle class="store-probe probe-a" cx="266" cy="139" r="3"/><circle class="store-probe probe-b" cx="408" cy="192" r="3"/>
+        </g>
+
+        <g class="motion motion--lighthouse">
+          <path class="beam beam--wide" d="M501 151 L805 65 L790 135 Z" fill="url(#beamWash)"/>
+          <path class="beam beam--core" d="M501 151 L774 90"/>
+          <circle class="lamp-glow" cx="501" cy="151" r="7"/>
+        </g>
+
+        <g class="motion motion--orders">
+          <g class="order order--normal"><rect x="-6" y="-4" width="12" height="8" rx="2"/><animateMotion dur="8s" begin="-1s" repeatCount="indefinite"><mpath href="#normalOrderRoute"/></animateMotion></g>
+          <g class="order order--normal"><rect x="-5" y="-3.5" width="10" height="7" rx="2"/><animateMotion dur="8s" begin="-3.5s" repeatCount="indefinite"><mpath href="#normalOrderRoute"/></animateMotion></g>
+          <g class="order order--normal"><rect x="-6" y="-4" width="12" height="8" rx="2"/><animateMotion dur="8s" begin="-6s" repeatCount="indefinite"><mpath href="#normalOrderRoute"/></animateMotion></g>
+          <g class="order order--alert"><rect x="-6" y="-4" width="12" height="8" rx="2"/><animateMotion dur="9s" begin="-2s" repeatCount="indefinite"><mpath href="#alertOrderRoute"/></animateMotion></g>
+          <g class="order order--alert"><rect x="-5" y="-3.5" width="10" height="7" rx="2"/><animateMotion dur="9s" begin="-6.5s" repeatCount="indefinite"><mpath href="#alertOrderRoute"/></animateMotion></g>
+        </g>
+
+        <g class="motion motion--inventory">
+          <circle class="inventory-dot" r="3"><animateMotion dur="12s" begin="-1s" repeatCount="indefinite"><mpath href="#inventoryRoute"/></animateMotion></circle>
+          <circle class="inventory-dot" r="2.5"><animateMotion dur="12s" begin="-5s" repeatCount="indefinite"><mpath href="#inventoryRoute"/></animateMotion></circle>
+          <circle class="inventory-dot" r="3"><animateMotion dur="12s" begin="-9s" repeatCount="indefinite"><mpath href="#inventoryRoute"/></animateMotion></circle>
+        </g>
+
+        <g class="motion motion--forecast">
+          <circle class="forecast-dot" r="3"><animateMotion dur="6.5s" begin="-1s" repeatCount="indefinite"><mpath href="#forecastRouteA"/></animateMotion></circle>
+          <circle class="forecast-dot" r="2"><animateMotion dur="6.5s" begin="-3.6s" repeatCount="indefinite"><mpath href="#forecastRouteA"/></animateMotion></circle>
+          <circle class="forecast-dot faint" r="2.5"><animateMotion dur="7.5s" begin="-2s" repeatCount="indefinite"><mpath href="#forecastRouteB"/></animateMotion></circle>
+        </g>
+
+        <g class="motion motion--garden">
+          <circle class="garden-seed seed-a" cx="748" cy="336" r="3"/><circle class="garden-seed seed-b" cx="783" cy="314" r="2.5"/><circle class="garden-seed seed-c" cx="818" cy="348" r="3"/><circle class="garden-seed seed-d" cx="856" cy="302" r="2"/>
+        </g>
+      </svg>
+      <div class="ambient ambient--forecast" aria-hidden="true"></div>
+      <div class="ambient ambient--harbor" aria-hidden="true"></div>
+
+      <button class="landmark" style="--x:84%;--y:55%;--w:18%;--h:24%" data-id="loss" aria-label="前往亏损订单港"></button>
+      <button class="landmark" style="--x:66%;--y:25%;--w:18%;--h:30%" data-id="basket" aria-label="前往商品关联研究所"></button>
+      <button class="landmark" style="--x:76%;--y:49%;--w:15%;--h:17%" data-id="store" aria-label="前往门店实验站"></button>
+      <button class="landmark" style="--x:27%;--y:64%;--w:26%;--h:24%" data-id="inventory" aria-label="前往商品库存中心"></button>
+      <button class="landmark" style="--x:66%;--y:64%;--w:15%;--h:30%" data-id="forecast" aria-label="前往活动策略站"></button>
+      <button class="landmark" style="--x:32%;--y:34%;--w:22%;--h:26%" data-id="garden" aria-label="前往数据温室"></button>
+      <button class="landmark" style="--x:50%;--y:32%;--w:17%;--h:43%" data-id="overview" aria-label="前往经营观测台"></button>
+
+      <div class="avatar" id="avatar" aria-label="研究员角色">
+        <span class="avatar__shadow"></span>
+        <img src="./assets/island-researcher.png" alt="紫色长发、身穿白色实验服的极简岛屿研究员">
+      </div>
+
+      <div class="nearby" id="nearby" role="status" aria-live="polite">
+        <div class="nearby__eyebrow">NEARBY</div>
+        <div class="nearby__name" id="nearbyName"></div>
+        <button class="enter" id="enterButton"><kbd>E</kbd><span>进入</span></button>
+      </div>
+    </div>
+
+    <header class="masthead">
+      <a class="identity" href="./" aria-label="零售数据研究岛首页">
+        <span class="identity__mark"><i></i><i></i><i></i></span>
+        <span><strong>零售数据研究岛</strong><small>RETAIL DATA RESEARCH ISLAND</small></span>
+      </a>
+      <a class="island-state workflow-entry" href="./modules/research-room.html?module=overview&view=flows&scope=all"><span class="state-dot"></span><span>流程与成果 ↗</span><small>查看任务记录与资源时间</small></a>
+    </header>
+
+    <nav class="explore-route" aria-label="研究岛导览"><span>从经营信号出发</span><a href="./modules/research-room.html?module=overview">经营观察</a><i>→</i><a href="./modules/research-room.html?module=store">问题诊断</a><i>→</i><a href="./modules/research-room.html?module=forecast">活动策略</a><i>→</i><a href="./modules/research-room.html?module=garden">成长档案</a><a class="all-islands" href="./modules/research-room.html?module=overview&view=islands">全岛导览 ↗</a></nav>
+
+    <div class="hint" id="hint">
+      <div class="hint__keys"><kbd>W</kbd><span><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd></span></div>
+      <p><strong>漫游研究岛</strong><span>点击地面移动 · 靠近地标探索</span></p>
+      <button id="dismissHint" aria-label="关闭操作提示">×</button>
+    </div>
+
+    <button class="sound" id="soundToggle" aria-label="开关环境音效" aria-pressed="false">
+      <span></span><span></span><span></span>
+    </button>
+
+    <section class="sheet" id="sheet" aria-modal="true" role="dialog" aria-labelledby="sheetTitle" hidden>
+      <div class="sheet__veil" data-close></div>
+      <div class="sheet__panel">
+        <button class="sheet__close" data-close aria-label="关闭">×</button>
+        <div class="sheet__index" id="sheetIndex">07</div>
+        <p class="sheet__eyebrow">RESEARCH MODULE</p>
+        <h1 id="sheetTitle"></h1>
+        <p id="sheetEn" class="sheet__en"></p>
+        <p id="sheetDescription" class="sheet__description"></p>
+        <div class="sheet__status"><i></i><span id="sheetStatus"></span></div>
+        <div class="sheet__actions">
+          <a class="sheet__open" id="sheetOpen" href="#">进入分析空间 <span>↗</span></a>
+          <button class="sheet__stay" data-close>留在岛上</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <audio id="islandBgm" src="./assets/bgm-previews/02-sea-flower-walk.wav" preload="auto" loop></audio>
+  <script src="./catalog.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>

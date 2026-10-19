@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>研究空间 · 零售数据研究岛</title><link rel="stylesheet" href="research-room.css"><link rel="stylesheet" href="../public-demo.css"></head>
+<body><div class="public-demo-badge" role="note">公开演示 · 所有业务数据均为虚构</div>
+  <header class="room-top"><a href="../index.html#island">← 返回研究岛</a><a class="room-brand" href="../index.html#island">RETAIL DATA RESEARCH ISLAND</a><a href="?module=overview&view=flows&scope=all">流程与成果 ↗</a></header>
+  <main id="room">
+    <div class="room-heading"><div><p class="eyebrow" id="roomEn"></p><h1 id="roomName"></h1><p id="roomDescription"></p></div><span class="room-number" id="roomNumber"></span></div>
+    <nav class="room-tabs" aria-label="研究空间内容"><button class="active" data-view="resources">看板与工具</button><button data-view="flows">固定流程</button><button data-view="islands">岛屿导览</button><span id="snapshotTime"></span></nav>
+    <section id="resourcesView"><div class="resource-grid" id="resourceGrid"></div><p class="source-detail">文件入口展示已同步的成果；来源时间见各项说明。原业务系统负责下载、计算与发送。</p></section>
+    <section id="flowsView" hidden><div class="section-intro"><h2>流程有记录，成果有出处。</h2><p>调度状态与执行结果分别展示。此公开版本不连接真实任务、数据库或消息服务。</p><button id="refreshStatus">刷新记录 ↻</button></div><div class="flow-list" id="flowList"></div></section>
+    <section id="islandsView" hidden><p class="guide-intro">经营观察 → 问题诊断 → 商品与活动 → 执行交付 → 成长档案</p><div class="island-directory" id="islandDirectory"></div></section>
+  </main>
+  <dialog id="viewer"><header><div><small id="viewerType"></small><h2 id="viewerTitle"></h2></div><a id="viewerOpen" target="_blank" rel="noopener">新窗口打开 ↗</a><button id="closeViewer" aria-label="关闭预览">×</button></header><p id="viewerNote"></p><div id="frameHost"></div></dialog>
+  <script src="../catalog.js"></script><script src="../integrations/resource-manifest.js"></script><script src="research-room.js"></script>
+</body></html>

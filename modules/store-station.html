@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>门店实验站 · Retail Data Research Island</title>
+  <link rel="stylesheet" href="store-station.css">
+  <link rel="stylesheet" href="query-bench.css">
+<link rel="stylesheet" href="../public-demo.css"></head>
+<body><div class="public-demo-badge" role="note">公开演示 · 所有业务数据均为虚构</div>
+  <header class="topbar">
+    <a class="back" href="../index.html" aria-label="返回研究岛">← 返回研究岛</a>
+    <div class="brand"><span>03</span><strong>门店实验站</strong><small>STORE STATION</small></div>
+    <div class="source"><i></i> 公开演示 · 虚构订单样本</div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div>
+        <p class="eyebrow">RETAIL INTERVENTION LAB</p>
+        <h1>把经营动作放进实验舱，<br>先看影响，再决定是否执行。</h1>
+      </div>
+      <p class="intro-note">当前展示为固定订单数量与商品结构、只改变单一杠杆的理论模拟。结果用于判断方向与量级，不代表因果，也不能跨实验直接相加。</p>
+    </section>
+
+    <nav class="lab-tabs" aria-label="实验选择">
+      <button class="active" data-tab="delivery"><span class="tab-icon">⌁</span> 调整配送</button>
+      <button data-tab="discount"><span class="tab-icon">%</span> 缩减折扣</button>
+      <button data-tab="query"><span class="tab-icon">↗</span> 经营查询</button>
+    </nav>
+
+    <section class="experiment active" id="deliveryLab">
+      <div class="control-panel">
+        <p class="panel-label">配送承担调整</p>
+        <h2>每单降低 <strong id="deliveryStep">1.0</strong><em>元</em></h2>
+        <input id="deliveryRange" type="range" min="0" max="4" step="1" value="1" aria-label="配送承担降低幅度">
+        <div class="ticks"><span>0.5</span><span>1</span><span>2</span><span>3</span><span>5元</span></div>
+        <div class="scope"><span>影响订单</span><b id="deliveryOrders">—</b></div>
+        <p>拖动滑杆观察配送承担下降后，亏损订单被修复的估算范围。</p>
+      </div>
+      <div class="observation-card delivery-scene">
+        <div class="scene-heading"><span>影响观测</span><small>DELIVERY FLOW</small></div>
+        <div class="delivery-flow">
+          <div class="node"><svg viewBox="0 0 64 64"><path d="M12 40h31V20H23l-5 8h-6zM43 28h8l6 8v4H43z"/><circle cx="23" cy="45" r="5"/><circle cx="49" cy="45" r="5"/></svg><b>订单出发</b></div>
+          <div class="flow-line"><i></i><i></i><i></i><i></i></div>
+          <div class="gate"><span>配送承担</span><b id="deliveryGate">− ¥1.0</b></div>
+          <div class="flow-line recovered"><i></i><i></i><i></i><i></i></div>
+          <div class="node store-node"><svg viewBox="0 0 64 64"><path d="M10 29h44l-4-14H14zM15 31v20h34V31M23 51V38h10v13M39 38h6v7h-6z"/></svg><b>利润回流</b></div>
+        </div>
+        <div class="parcel-grid" id="deliveryIcons" aria-label="扭亏订单图标"></div>
+        <p class="icon-caption"><b id="deliveryTurned">—</b> 笔订单预计由亏转盈；亮起的包裹代表修复比例。</p>
+      </div>
+      <div class="result-strip">
+        <article><span>利润提升</span><b id="deliveryProfit">—</b><small>理论增量</small></article>
+        <article><span>可回收亏损</span><b id="deliveryRecovery">—</b><small>不超过关联亏损</small></article>
+        <article><span>亏损修复率</span><b id="deliveryRate">—</b><small>按关联亏损估算</small></article>
+      </div>
+    </section>
+
+    <section class="experiment query-experiment" id="queryLab">
+      <div class="query-intro">
+        <div><p class="panel-label">LOCAL DEMO QUERY</p><h2>拖拽字段，组合一个简单经营查询</h2></div>
+        <div class="db-state" id="dbState"><i></i><span>正在检查连接…</span><button id="loadSchema">重新读取</button></div>
+      </div>
+      <div class="query-layout">
+        <aside class="field-bank">
+          <label>数据表</label><select id="tableSelect"><option value="">选择示例数据表</option></select>
+          <p>字段</p><div id="fieldList" class="field-list"><span class="empty">连接后显示可用字段</span></div>
+        </aside>
+        <div class="query-canvas">
+          <div class="drop-zone" data-zone="dimensions"><header><b>维度</b><small>分组字段</small></header><div class="drop-content" id="dimensions"><span>拖入文本、日期字段</span></div></div>
+          <div class="drop-zone" data-zone="metrics"><header><b>指标</b><small>数值字段默认求和</small></header><div class="drop-content" id="metrics"><span>拖入数值字段</span></div></div>
+          <div class="drop-zone filter-zone" data-zone="filters"><header><b>筛选</b><small>拖入字段后填写条件</small></header><div class="drop-content" id="filters"><span>拖入任意字段</span></div></div>
+          <div class="query-actions"><label>最多返回 <input id="queryLimit" type="number" min="1" max="500" value="100"> 行</label><button id="runQuery">运行查询</button></div>
+        </div>
+      </div>
+      <div class="query-result"><div class="result-head"><b>查询结果</b><span id="resultStatus">尚未运行</span></div><div class="table-wrap" id="resultTable"><div class="result-empty">将字段拖入上方区域后运行查询</div></div></div>
+    </section>
+
+    <section class="experiment" id="discountLab">
+      <div class="control-panel violet">
+        <p class="panel-label">活动承担调整</p>
+        <h2>降低 <strong id="discountStep">3</strong><em>pp</em></h2>
+        <input id="discountRange" type="range" min="0" max="5" step="1" value="2" aria-label="活动承担降低幅度">
+        <div class="ticks"><span>1</span><span>2</span><span>3</span><span>5</span><span>8</span><span>10pp</span></div>
+        <div class="scope"><span>影响订单</span><b id="discountOrders">—</b></div>
+        <p>每枚票券代表一组活动订单。颜色从紫色转为青绿，表示折扣缩减后有更多利润空间被释放。</p>
+      </div>
+      <div class="observation-card discount-scene">
+        <div class="scene-heading"><span>票券观测</span><small>DISCOUNT SIGNALS</small></div>
+        <div class="coupon-grid" id="discountIcons" aria-label="折扣影响图标"></div>
+        <div class="discount-legend"><span><i class="coupon-dot before"></i>仍受活动挤压</span><span><i class="coupon-dot after"></i>预计释放利润</span></div>
+        <div class="icon-summary">
+          <div><svg viewBox="0 0 48 48"><path d="M9 13h30v8a5 5 0 0 0 0 10v8H9v-8a5 5 0 0 0 0-10z"/><path d="M19 31l10-14M19 18h.1M29 30h.1"/></svg><span><b id="discountTurned">—</b> 笔订单扭亏</span></div>
+          <div><svg viewBox="0 0 48 48"><path d="M24 40V19M16 27l8-8 8 8M11 39h26"/></svg><span><b id="discountProfit">—</b> 利润提升</span></div>
+          <div><svg viewBox="0 0 48 48"><path d="M8 25c8-12 24-12 32 0-8 12-24 12-32 0z"/><circle cx="24" cy="25" r="5"/></svg><span><b id="discountRecovery">—</b> 可回收亏损</span></div>
+        </div>
+      </div>
+      <div class="result-strip compact">
+        <article><span>亏损修复率</span><b id="discountRate">—</b><small>按关联亏损估算</small></article>
+        <article><span>单笔利润释放</span><b id="discountPerOrder">—</b><small>利润提升 ÷ 影响订单</small></article>
+        <article><span>模拟边界</span><b>单一变量</b><small>订单与商品结构固定</small></article>
+      </div>
+    </section>
+  </main>
+
+  <script src="../demo-data.js"></script>
+  <script src="store-station.js"></script>
+  <script src="demo-query.js"></script><script src="query-bench.js"></script>
+</body>
+</html>
