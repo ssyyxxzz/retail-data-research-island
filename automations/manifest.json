@@ -1,0 +1,159 @@
+{
+  "template_only": true,
+  "task_count": 17,
+  "tasks": [
+    {
+      "id": "04-30",
+      "name": "每日原始报表下载与接口核验（08:00，八份）",
+      "source_status": "ACTIVE",
+      "time": "08:00",
+      "rrule": "FREQ=DAILY;BYHOUR=8;BYMINUTE=0;BYSECOND=0",
+      "prompt_chars": 1412,
+      "sha256": "1f33063650f14e2b0b5e1df6ff30740a17dd3f4d910b83b260be58c9dd6ffdd8"
+    },
+    {
+      "id": "08-30",
+      "name": "每日08:30牵牛花五店三表导出",
+      "source_status": "PAUSED",
+      "time": "08:30",
+      "rrule": "FREQ=DAILY;BYHOUR=8;BYMINUTE=30",
+      "prompt_chars": 1462,
+      "sha256": "0e46f273c9266d110b7780cfbe3c4221ac74b2597118d8edcd2c30d38f6fe378"
+    },
+    {
+      "id": "10-15",
+      "name": "每日10:15门店看板更新并由消息机器人发送",
+      "source_status": "PAUSED",
+      "time": "11:15",
+      "rrule": "RRULE:FREQ=WEEKLY;BYHOUR=11;BYMINUTE=15;BYDAY=SU,MO,TU,WE,TH,FR,SA",
+      "prompt_chars": 945,
+      "sha256": "cae45083a31c9ea67a7e2b28b18982f23641811f764dab74564cfc9789479ce5"
+    },
+    {
+      "id": "10-30",
+      "name": "每日8:30业绩表发角色09再更新看板发群",
+      "source_status": "ACTIVE",
+      "time": "08:30",
+      "rrule": "FREQ=DAILY;BYHOUR=8;BYMINUTE=30;BYSECOND=0",
+      "prompt_chars": 4512,
+      "sha256": "9ee451791a9124e6145e6f3926787b517a31a341dd8fc3feaed2b37df4b14239"
+    },
+    {
+      "id": "100",
+      "name": "示例门店〈08〉快消100品调价效果观察",
+      "source_status": "PAUSED",
+      "time": "11:30",
+      "rrule": "FREQ=DAILY;BYHOUR=11;BYMINUTE=30;BYSECOND=0",
+      "prompt_chars": 920,
+      "sha256": "05d0b884aa71aeea460556b3bbf637c191e5c97eb34ca8943e602f024e3b6374"
+    },
+    {
+      "id": "13-55-23",
+      "name": "每日13:55全部门店实时查询与重点23店群发送",
+      "source_status": "ACTIVE",
+      "time": "13:55",
+      "rrule": "FREQ=DAILY;BYHOUR=13;BYMINUTE=55;BYSECOND=0",
+      "prompt_chars": 925,
+      "sha256": "ba16fd007e625782d5db5e1e168bba83e2f530c3ebc5d39a06db45af06c466f2"
+    },
+    {
+      "id": "17-55-23",
+      "name": "每日17:55全部门店实时查询与重点23店群发送",
+      "source_status": "ACTIVE",
+      "time": "17:55",
+      "rrule": "FREQ=DAILY;BYHOUR=17;BYMINUTE=55;BYSECOND=0",
+      "prompt_chars": 925,
+      "sha256": "8454f84fc7a916bf5624a9bcb48a7c9c7461bd6c72c29fb5adc3e86d26ac9ab6"
+    },
+    {
+      "id": "23",
+      "name": "每日09:55全部门店实时查询与重点23店群发送",
+      "source_status": "ACTIVE",
+      "time": "09:55",
+      "rrule": "FREQ=DAILY;BYHOUR=9;BYMINUTE=55;BYSECOND=0",
+      "prompt_chars": 925,
+      "sha256": "aa894e034109d09c40af4d2d7de99083207e3e5547677d6f9a5997c82bbf1de7"
+    },
+    {
+      "id": "automation",
+      "name": "每日门店商品自动导入",
+      "source_status": "ACTIVE",
+      "time": "09:30",
+      "rrule": "FREQ=DAILY;BYHOUR=9;BYMINUTE=30",
+      "prompt_chars": 339,
+      "sha256": "fb71a01344fa06906009b59c461c526dda802fabfb2b12a65312f87c6cf0e5ee"
+    },
+    {
+      "id": "automation-10",
+      "name": "每日牵牛花缺货数据汇总",
+      "source_status": "ACTIVE",
+      "time": "04:00",
+      "rrule": "FREQ=DAILY;BYHOUR=4;BYMINUTE=0",
+      "prompt_chars": 799,
+      "sha256": "53c392d9a24b842a022a553778acb557d457043b6a36a74c99097f76776d0013"
+    },
+    {
+      "id": "automation-11",
+      "name": "六店门店日报及老店改造看板每日更新",
+      "source_status": "PAUSED",
+      "time": "14:00",
+      "rrule": "RRULE:FREQ=DAILY;BYHOUR=14;BYMINUTE=0",
+      "prompt_chars": 2736,
+      "sha256": "e66c9e3e5046c7caaa481d21cb2beec218ff578af1a977d42d7bf690dbaf3a46"
+    },
+    {
+      "id": "automation-2",
+      "name": "每日更新门店活动调整看板",
+      "source_status": "ACTIVE",
+      "time": "17:00",
+      "rrule": "FREQ=DAILY;BYHOUR=17;BYMINUTE=0;BYSECOND=0",
+      "prompt_chars": 946,
+      "sha256": "f78b9fb0d443b11b1538ef8ee09ce9d3c597aa7ca27506bbd629fc63f946fa02"
+    },
+    {
+      "id": "automation-3",
+      "name": "淘闪每日下载昨日报表",
+      "source_status": "ACTIVE",
+      "time": "07:00",
+      "rrule": "FREQ=DAILY;BYHOUR=7;BYMINUTE=0;BYSECOND=0",
+      "prompt_chars": 435,
+      "sha256": "8a749b0ff18a81068ae783e283c38a6a2a5d8af2f19a22e025b62f071f85b1fd"
+    },
+    {
+      "id": "automation-6",
+      "name": "翱象底表07:30及实付毛利预警群发送",
+      "source_status": "ACTIVE",
+      "time": "07:30",
+      "rrule": "FREQ=DAILY;BYHOUR=7;BYMINUTE=30;BYSECOND=0",
+      "prompt_chars": 5033,
+      "sha256": "d3ed1693f1e0c1ce352e13c1c020736d10f35b1fd9b71e88206e8b6acfadf9e3"
+    },
+    {
+      "id": "automation-7",
+      "name": "牵牛花亏损订单每日导出与处理",
+      "source_status": "ACTIVE",
+      "time": "06:15",
+      "rrule": "RRULE:FREQ=WEEKLY;BYHOUR=6;BYMINUTE=15;BYDAY=SU,MO,TU,WE,TH,FR,SA",
+      "prompt_chars": 1962,
+      "sha256": "8e2cde0066d49008e9f1676a1244bed10e1bab8d9702669b4a02a4af451c54fe"
+    },
+    {
+      "id": "automation-8",
+      "name": "美团三分钟回复率与商品负反馈日报",
+      "source_status": "ACTIVE",
+      "time": "06:00",
+      "rrule": "FREQ=DAILY;BYHOUR=6;BYMINUTE=0",
+      "prompt_chars": 2751,
+      "sha256": "6769c10b98dd619563adebce9b75b88aa6284bc11011b67fbc98736b06d74ebe"
+    },
+    {
+      "id": "automation-9",
+      "name": "牵牛花必有品每日监控",
+      "source_status": "PAUSED",
+      "time": "05:00",
+      "rrule": "FREQ=DAILY;BYHOUR=5;BYMINUTE=0",
+      "prompt_chars": 1416,
+      "sha256": "97eae907ffb526a20e46ee6fee3535279c5104265bb4ed030a11ac6441c888fa"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+name = "每日门店商品自动导入"
+status = "PAUSED"
+source_status = "ACTIVE"
+timezone = "Asia/Shanghai"
+rrule = "FREQ=DAILY;BYHOUR=9;BYMINUTE=30"
+template_only = true
+prompt = "执行每日门店商品自动导入检查。在本地项目 ${LOCAL_PATH_014} 中运行 ${LOCAL_PATH_015}。脚本递归扫描 ${LOCAL_PATH_016}，选择文件名包含 ${BUSINESS_IDENTIFIER_006} 且业务日期最新的门店商品 ZIP；相同文件已经发布则跳过，发现未发布的新版本才导入。导入必须使用“独立临时装载、校验、建索引、事务发布、发布后清理旧日版本”的统一流程，任何失败都不得让半份数据成为当前版本。读取 ${LOCAL_PATH_017} 中本次日志，报告文件名、业务日期、开始时间、提取与校验耗时、并行装载耗时、合并与索引耗时、原子切换时间、清理耗时、总耗时、导入或跳过结果及错误。不得自行修改数据库结构、导入脚本或历史文件。"

@@ -1,0 +1,7 @@
+name = "每日17:55全部门店实时查询与重点23店群发送"
+status = "PAUSED"
+source_status = "ACTIVE"
+timezone = "Asia/Shanghai"
+rrule = "FREQ=DAILY;BYHOUR=17;BYMINUTE=55;BYSECOND=0"
+template_only = true
+prompt = "每天北京时间（Asia/Shanghai）17:55 执行一次手机实时经营数据查询。工作目录 ${LOCAL_PATH_003}。执行 Python 脚本 ${LOCAL_PATH_013} --slot 1755。触发早于指定时点时等待到时点，禁止提前查询并占用该时段回执。先确认 MuMu 设备在线；取数使用已授权的手机实时接口。每次刷新账户当前全部门店名单，查询当天美团闪购、饿了么及全部渠道的实时交易、毛利和涨跌幅。全部门店文件 全部门店_YYYYMMDD_HHMM.xlsx 本地保留，并由消息机器人发送到飞书“业务群A”群（${MESSAGE_ID_006}）。用户指定23家重点门店的三渠道文件 重点门店_YYYYMMDD_HHMM.xlsx 继续只发到“业务群B”群（${MESSAGE_ID_004}）。两群均使用消息机器人（profile ${MESSAGE_ID_001}，--as bot），用户已明确授权定时发送，不需再次确认。名单、负责人及${REFERENCE_DATE_008}上线天数基准在 tools\\qnh_realtime_flow_config.json；运行日上线天数=${BASELINE_DAYS}+运行日与${REFERENCE_DATE_008}相差的自然日数，同一天三轮使用相同天数，按配置的生效日期应用负责人。发送前验证重点文件仅含23家、69项渠道记录，全部文件完整包含当前全部门店及其三渠道记录，并确认两群名称和消息机器人身份。不得把全部门店文件发到“业务群B”群，不得替换成历史日报，不得更改业务设置。检查 outputs\\qnh_realtime_runs\\YYYYMMDD\\HHMM\\流程回执.json：file_message_id 为重点发送回执，full_file_message_id 为全部发送回执；各群已有成功回执不重复发送，一群失败只补发该群；配置新增前已经完成的旧时段不补发。成功需确认两份发送message_id。登录过期或查询、匹配、发送失败时保留日志和失败回执，报告具体错误，不将旧数据冒充实时数据发送。正常成功保持安静；只在失败、需要重新登录或用户处理时通知。"
